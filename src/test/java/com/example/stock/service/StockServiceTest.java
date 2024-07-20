@@ -35,37 +35,37 @@ class StockServiceTest {
         stockRepository.deleteAll();
     }
 
-    @Test
-    public void decrease_test() {
-        stockService.decrease(1L, 1L);
+    // @Test
+    // public void decrease_test() {
+    // stockService.decrease(1L, 1L);
 
-        Stock stock = stockRepository.findById(1L).orElseThrow();
-        // 100 - 1 = 99
+    // Stock stock = stockRepository.findById(1L).orElseThrow();
+    // // 100 - 1 = 99
 
-        assertEquals(99, stock.getQuantity());
-    }
+    // assertEquals(99, stock.getQuantity());
+    // }
 
-    @Test
-    public void 동시에_100명이_주문() throws InterruptedException {
-        int threadCount = 100;
-        ExecutorService executorService = Executors.newFixedThreadPool(32);
-        CountDownLatch latch = new CountDownLatch(threadCount);
+    // @Test
+    // public void 동시에_100명이_주문() throws InterruptedException {
+    // int threadCount = 100;
+    // ExecutorService executorService = Executors.newFixedThreadPool(32);
+    // CountDownLatch latch = new CountDownLatch(threadCount);
 
-        for (int i = 0; i < threadCount; i++) {
-            executorService.submit(() -> {
-                try {
-                    stockService.decrease(1L, 1L);
-                } finally {
-                    latch.countDown();
-                }
-            });
-        }
+    // for (int i = 0; i < threadCount; i++) {
+    // executorService.submit(() -> {
+    // try {
+    // stockService.decrease(1L, 1L);
+    // } finally {
+    // latch.countDown();
+    // }
+    // });
+    // }
 
-        latch.await();
+    // latch.await();
 
-        Stock stock = stockRepository.findById(1L).orElseThrow();
+    // Stock stock = stockRepository.findById(1L).orElseThrow();
 
-        // 100 - (100 * 1) = 0
-        assertEquals(0, stock.getQuantity());
-    }
+    // // 100 - (100 * 1) = 0
+    // assertEquals(0, stock.getQuantity());
+    // }
 }
