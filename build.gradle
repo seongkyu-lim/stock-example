@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.18' // Newer patch version of Spring Boot available: 2.7.18
+	id 'org.springframework.boot' version '3.3.3' // Newer patch version of Spring Boot available: 2.7.18
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
