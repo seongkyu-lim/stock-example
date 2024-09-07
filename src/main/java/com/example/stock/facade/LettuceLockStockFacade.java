@@ -22,7 +22,6 @@ public void decrease(Long key, Long quantity) throws InterruptedException {
 while (!redisLockRepository.lock(key)) {
 Thread.sleep(100);
 }
-할
 try {
 stockService.decrease(key, quantity);
 } finally {
@@ -31,4 +30,3 @@ redisLockRepository.unlock(key);
 }
 }
 }
-면
